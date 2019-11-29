@@ -3,6 +3,7 @@ const app = express();
 const http = require('http');
 const bodyparser = require('body-parser');
 const mysql = require('mysql');
+const eurekaHelper = require('./eureka-helper');
 
 const routes = require('./routes');
 
@@ -26,6 +27,8 @@ db.connect((err) => {
     }
 });
 global.db = db;
+
+eurekaHelper.registerWithEureka('manager-service', port);
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
