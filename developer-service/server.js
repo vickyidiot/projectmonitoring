@@ -7,7 +7,7 @@ const eurekaHelper = require('./eureka-helper');
 
 const routes = require('./routes');
 
-const port = 8001;
+const port = 8002;
 
 const db = mysql.createConnection ({
     host: 'localhost',

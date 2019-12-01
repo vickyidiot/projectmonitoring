@@ -1,4 +1,4 @@
-http://localhost:8001/createtask
+http://localhost:8050/manager-service/createtask
 {
     "description" : "First Task,Write Rest End Points",
     "priority" : "HIGH",
@@ -8,12 +8,12 @@ http://localhost:8001/createtask
     "due_date" : "2019-12-01 23:59:59"
 }
 
-http://localhost:8001/gettask
+http://localhost:8050/manager-service/gettask
 {
     "task_id" : 1
 }
 
-http://localhost:8001/updatetask
+http://localhost:8050/manager-service/updatetask
 {
     "task_id" : 1,
     "description" : "First Task,Write Rest End Points And Edited",
@@ -24,13 +24,13 @@ http://localhost:8001/updatetask
     "due_date" : "2019-12-01 23:59:59"
 }
 
-http://localhost:8001/updatetaskstatus
+http://localhost:8050/manager-service/updatetaskstatus
 {
     "task_id" : 1,
     "status" : "To Do"
 }
 
-http://localhost:8001/createtimesheet
+http://localhost:8050/manager-service/createtimesheet
 {
     "task_id" : 1,
     "user_id" : 1,
@@ -42,7 +42,7 @@ http://localhost:8001/createtimesheet
     "tso_deployment" : "01:15"
 }
 
-http://localhost:8001/updatetimesheet
+http://localhost:8050/manager-service/updatetimesheet
 {
     "user_id" : 1,
     "task_id" : 1,
@@ -55,8 +55,8 @@ http://localhost:8001/updatetimesheet
     "tso_deployment" : "01:00"
 }
 
-http://localhost:8001/gettaskreport
+http://localhost:8050/manager-service/gettaskreport
 {}
 
-http://localhost:8001/gettimesheetreport
+http://localhost:8050/manager-service/gettimesheetreport
 {}
