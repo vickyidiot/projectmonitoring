@@ -1,4 +1,11 @@
 const sqlqueries = require('./sqlqueries');
+let nodemailer = require('./nodemailer');
+
+/* Mail Id Has To Be Taken From Database Dynamically,Hardcoding For Now */
+const mailid = {
+    "manager": 'mplvignesh@gmail.com',
+    "developer": 'mplvignesh@gmail.com',
+};
 
 exports.createtask = function (req, res) {
     let { description, priority, status, assigned_to, start_date, due_date } = req.body;
@@ -81,7 +88,25 @@ exports.createtimesheet = function (req, res) {
             if (err) {
                 res.status(500).json({ errormessage: err });
             } else {
-                // Trigger Mail To Manager
+                let mailOptions = {
+                    from: 'mplvignesh@gmail.com',
+                    to: 'mplvignesh@gmail.com',
+                    subject: `Timesheet Has Been Entered For Task ID ${task_id} By User ${user_id}`,
+                    text: `
+                    Total Time Spent : ${total_time_spent},
+                    Time Spent On Development : ${tso_development},
+                    Time Spent On Testing : ${tso_testing},
+                    Time Spent On Bug Fix Improvements : ${tso_bug_fix_improvements},
+                    Time Spent On Deployment : ${tso_deployment},
+                    Time Spent On Meeting : ${tso_meeting}`
+                };
+                nodemailer.transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                });
                 res.status(200).json({ successmessage: 'Created Timesheet' });
             }
         });
@@ -89,7 +114,7 @@ exports.createtimesheet = function (req, res) {
 }
 
 exports.updatetimesheet = function (req, res) {
-    let { timesheet_id, total_time_spent, tso_development, tso_testing, tso_bug_fix_improvements, tso_deployment, tso_meeting } = req.body;
+    let { user_id, task_id, timesheet_id, total_time_spent, tso_development, tso_testing, tso_bug_fix_improvements, tso_deployment, tso_meeting } = req.body;
     if (timesheet_id === undefined || timesheet_id === null) {
         res.status(500).json({ errormessage: 'timesheet_id Column Is Required' });
     } else if (total_time_spent === undefined || total_time_spent === null) {
@@ -100,7 +125,25 @@ exports.updatetimesheet = function (req, res) {
             if (err) {
                 res.status(500).json({ errormessage: err });
             } else {
-                // Trigger Mail To Manager
+                let mailOptions = {
+                    from: 'mplvignesh@gmail.com',
+                    to: 'mplvignesh@gmail.com',
+                    subject: `Timesheet Has Been Update For Task ID ${task_id} By User ${user_id}`,
+                    text: `
+                    Total Time Spent : ${total_time_spent},
+                    Time Spent On Development : ${tso_development},
+                    Time Spent On Testing : ${tso_testing},
+                    Time Spent On Bug Fix Improvements : ${tso_bug_fix_improvements},
+                    Time Spent On Deployment : ${tso_deployment},
+                    Time Spent On Meeting : ${tso_meeting}`
+                };
+                nodemailer.transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                });
                 res.status(200).json({ successmessage: 'Modified Timesheet' });
             }
         });

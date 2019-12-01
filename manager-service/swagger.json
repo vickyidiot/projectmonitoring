@@ -1,0 +1,75 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Project Monitoring",
+    "description": "API documentation for `Project Monitoring` Tool Using Swagger",
+    "termsOfService": "http://localhost:8050/",
+    "contact": {
+      "email": "vignesh.murali@infosys.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://localhost:8050/"
+    },
+    "version": "0.0.1"
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8050/"
+    }
+  ],
+  "paths": {
+    "/manager-service/createtask": {
+      "post": {
+        "summary": "Create a new task",
+        "requestBody": {
+          "description": "To create a new task",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Createtask"
+              }
+            }
+          }
+        },
+        "responses": {
+          "405": {
+            "description": "Invalid input",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Createtask": {
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "assigned_to": {
+            "type": "integer"
+          },
+          "start_date": {
+            "type": "string"
+          },
+          "due_date": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

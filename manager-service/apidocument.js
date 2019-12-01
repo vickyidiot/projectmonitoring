@@ -44,6 +44,8 @@ http://localhost:8001/createtimesheet
 
 http://localhost:8001/updatetimesheet
 {
+    "user_id" : 1,
+    "task_id" : 1,
     "timesheet_id" : 1,
     "total_time_spent" : "05:00",
     "tso_development" : "01:00",
