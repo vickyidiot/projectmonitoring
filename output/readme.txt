@@ -29,9 +29,9 @@ STARTING SERVICES
 4)Open developer-service location in terminal and enter command "npm start" or "node server.js"
 ________________________________________________________________________________________________________________________________________
 
-------------------------------------------
-END POINT URL AND SAMPLE INPUT FOR TESTING
-------------------------------------------
+---------------------------------------------------------
+END POINT URL AND SAMPLE INPUT FOR E2E FUNCTIONAL TESTING
+---------------------------------------------------------
 http://localhost:8050/manager-service/createtask
 {
     "description" : "First Task,Write Rest End Points",
@@ -144,6 +144,5 @@ CONTAINERIZATION - PARTIALLY COMPLETED
 26,27 - Docker implimentation and creating image
 28 - Not able to start service due to port conflict mapping.
 ________________________________________________________________________________________________________________________________________
-UNIT TESTING - PENDING
 AUTHORIZATION - PENDING
 ________________________________________________________________________________________________________________________________________
